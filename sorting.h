@@ -1,10 +1,10 @@
-void swap(int &a,int &b);
-void sort(int *a,int N);
-void display(int *a,int N);
+void swap(int &f,int &s);
+void sort(int *a,int n);
+void display(int *a,int n);
+#include <iomanip>
 
 
-
-void display(int a[], int n)
+void display(int *a, int n)
 {
     int i;
     for(i=0; i<n; i++)
@@ -14,13 +14,13 @@ void display(int a[], int n)
     cout<<endl;
 }
 
-void sort(int a[], int n)
+void sort(int *a, int n)
 {
     int i,j;
     //bubble sort - compare 7 element 6 times to get all pair so n elements compare n-1 times
-    for (j=0;j<n;j++)
+    for (j=0;j<n-1;j++)
     {
-        for(i = 0; i<n-1; i++)
+        for(i = 0; i<n-1-j; i++)
         {
             /*for ascending order*/
             if(a[i]>a[i+1]) swap(a[i],a[i+1]);
@@ -32,7 +32,7 @@ void sort(int a[], int n)
 void swap(int &f, int &s)
 {
     int temp;
-    f = temp;
+    temp = f;
     f = s;
     s = temp;
 }
