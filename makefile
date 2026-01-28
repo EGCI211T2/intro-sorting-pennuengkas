@@ -1,4 +1,4 @@
-DEPS= test
+DEPS= Penneung
 compile: main.cpp
 	 g++ main.cpp -o $(DEPS)
 
