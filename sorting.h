@@ -1,7 +1,7 @@
 void swap(int &f,int &s);
-void sort(int *a,int n);
+void bubblesort(int *a,int n);
 void display(int *a,int n);
-void selecionsort(int *a, int n);
+void selectionsort(int *a, int n);
 #include <iomanip>
 
 
@@ -15,7 +15,7 @@ void display(int *a, int n)
     cout<<endl;
 }
 
-void sort(int *a, int n)
+void bubblesort(int *a, int n)
 {
     int i,j;
     int sorted;
@@ -39,19 +39,17 @@ void sort(int *a, int n)
 
 void selectionsort(int *a, int n)
 {
-    for (int j=0;j<n;j++)
+    int *p;
+    for (int j=0; j<n; j++)
     {
-        int i, mi;
-        int min=a[j];
-        mi=j;    
-        for (i=1+j;i<n;i++)
+        p=&a[j];
+        for (int i=1+j;i<n;i++)
         {
-            if (min>a[i]){
-                min=a[i];
-                mi=i;
+            if (*p > a[i]){
+                p=&a[i];
             }
         }
-        swap(a[j], a[mi]);
+        swap(a[j], *p);
         display(a,n);
     }
 }
