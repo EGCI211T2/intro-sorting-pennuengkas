@@ -2,6 +2,7 @@ void swap(int &f,int &s);
 void bubblesort(int *a,int n);
 void display(int *a,int n);
 void selectionsort(int *a, int n);
+void insertionsort(int *a, int n);
 #include <iomanip>
 
 
@@ -15,7 +16,7 @@ void display(int *a, int n)
     cout<<endl;
 }
 
-void bubblesort(int *a, int n)
+void bubblesort(int *a, int n) // compare to the neighbor and swap if need be
 {
     int i,j;
     int sorted;
@@ -37,7 +38,7 @@ void bubblesort(int *a, int n)
     }
 }
 
-void selectionsort(int *a, int n)
+void selectionsort(int *a, int n) //find smallest put in front the proceed
 {
     int *p;
     for (int j=0; j<n; j++)
@@ -54,6 +55,23 @@ void selectionsort(int *a, int n)
     }
 }
 
+void insertionsort(int *a, int n) //while adding element push all that is more than it backward, no swaping involve. only work if the origial array is sorted
+/*The initial list can only be 1 number to start with, and sort from there. as we add number the sorted list grows bigger*/
+{
+    int i, j, new_num;
+    for(j=1; j<n; j++)
+    {
+        cout<<"==Round: "<<j<<" : Inserting "<<a[j]<<endl;
+        new_num = a[j];
+        for(i=j-1; i>=0 && new_num < a[i]; i--)
+        {
+            a[i+1] = a[i];
+            display(a,n); // to move the element backward
+        }
+        a[i+1] = new_num;
+        display(a,n);
+    }
+}
 
 void swap(int &f, int &s)
 {
